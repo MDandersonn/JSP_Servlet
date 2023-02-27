@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visitMapper">
+	<select id="connectTest" resultType="string">
+		select 'connect success' from dual
+	</select>
+	<!-- #{}안에는 아무거나 써도된다.  전달해주는게 context(String이니까  ) parameterType은 받는타입  이것도 
+	스트링으로 맞춰줘야함-->
+	<!-- parameterType은 받을때 타입 -->
+	<!-- 
+	<insert id="insert" parameterType="string">
+		insert into visit_t values(#{context})
+	</insert>
+	 -->
+	<!--  result가없으니까 result타입은 필요없음 -->
+
+<!-- { } 안에 들어가는 것과 DTO멤버변수 명칭은 같아야한다. 순서는 안중요함. -->
+	<insert id="insert" parameterType="model.dto.VisitDTO">
+		insert into visit_t values(#{id} ,#{context}, #{nickname})
+	</insert>
+	
+	<select id="selectAll" resultType="model.dto.VisitDTO">
+		select id,nickname,context from VISIT_T
+	</select>
+	
+	<select id="getId" resultType="int">
+		select visit_s.nextval from dual
+	</select>
+	
+	<select id="selectId" parameterType="model.dto.VisitDTO" resultType="model.dto.VisitDTO">
+		select id,nickname,context 
+		from visit_T
+		where id=#{id}
+	</select>
+	
+	<update id="update" parameterType="model.dto.VisitDTO" >
+		update visit_t
+		set nickname= #{nickname},
+			context= #{context}
+		where id= #{id}
+	</update>
+	
+	<delete id="delete" parameterType="model.dto.VisitDTO">
+		delete from visit_T
+		where id=#{id}
+	</delete>
+	
+	
+</mapper>

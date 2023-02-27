@@ -1,0 +1,41 @@
+package controller.board;
+
+import java.io.IOException;
+import java.util.List;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.dto.BoardDTO;
+import model.service.BoardService;
+
+@WebServlet("/board/rec")
+public class RecController extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		List<Integer> recHistory = (List<Integer>)session.getAttribute("boardRecCntHistory");
+		List<Integer> nRecHistory = (List<Integer>)session.getAttribute("boardNRecCntHistory");
+		
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		
+		BoardDTO dto = new BoardDTO();
+		dto.setId(id.intValue());
+		
+		BoardService service = new BoardService();
+		if(!recHistory.contains(id) && !nRecHistory.contains(id)) {//추천한적없고 비추천한적없을때
+			service.incRecCnt(dto);//추천수증가
+			recHistory.add(id);//추천눌렀다는 기록작성
+		} else if(recHistory.contains(id)) {//추천한적있을때 추천버튼누르면  추천취소됨
+			service.decreRecCnt(dto);
+			recHistory.remove(id);
+		}//비추천한적있을때 추천버튼누르면 아무일없음
+		session.setAttribute("boardRecCntHistory", recHistory);
+		
+		resp.sendRedirect(req.getContextPath() + "/board/detail?id=" + id);
+	}
+}
