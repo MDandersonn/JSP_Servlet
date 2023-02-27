@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "C:\\Users\\1215k\\eclipse-workspace\\expert-adventure-"
+		},
+		{
+			"path": "C:\\Users\\1215k\\eclipse-workspace\\java-class-a8"
+		},
+		{
+			"path": "../../../../../_Source/VScodeHTMLCSS"
+		},
+		{
+			"path": "../../../../../_Source/VScode Do it HTML CSS"
+		},
+		{
+			"path": "../../../../../_Source/VScodePython"
+		},
+		{
+			"path": "../../../../../_Source/VScode Do it javascript"
+		},
+		{
+			"path": "../../../../../_Source/HTML,CSS"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "HTML,CSS"
+	}
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Jquery검색 -> CDN 들어가기 > uncompressed 클릭 -->
+    <script
+    
+        src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+        
+</head>
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td class="title">제목입니다</td>
+                <td>tester</td>
+                <td>2022-12-28</td>
+                <td class="until">1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>테스트중입니다</td>
+                <td>admin</td>
+                <td>2022-12-28</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>테스트중입니다</td>
+                <td>admin</td>
+                <td>2022-12-28</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>테스트중입니다</td>
+                <td>admin</td>
+                <td>2022-12-28</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+<script>
+        // var temp=$("<a>").attr('href',"#").text("템프");
+        // console.log($('th'))
+        // $('th').append(temp);
+
+        // $('th').append(function(index){
+        //     if(index%2===0){
+        //         console.log(index)
+        //         return $("<a>").attr('href',"#").text('짝수');
+                
+        //     }
+        // })
+
+        //  $('th').append(function(index,value){
+            // return a;
+        // })
+        var a= $("<a>").attr('href',"#").text('에이');
+        var b= $("<a>").attr('href',"#").text('2단');
+        
+        //  $('th').append(function(index,value){
+        //     console.log(index+value)
+        //     if(index===2){
+        //         console.log("if문 내부")
+        //         return b;
+        //     }
+        //     return a;
+        // })
+
+        $('th').append(function(index,value){
+            console.log(index+value)
+            if(index===2){
+                console.log("if문 내부")
+                return a;
+            }
+        })
+
+        $('th').append(function(index,value){
+            console.log(index+value)
+            var a= $("<a>").attr('href',"#").text('새것');
+            return a;
+            
+        })
+
+
+
+
+
+        // for(let i=0;i<5;i++){
+        //     if(i===2){
+               
+        //         break;
+        //     }
+        //     console.log(i);
+        // }
+
+
+
+</script>
+
+
+</body>
+
+</html>
