@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookmarkMapper">
+	<insert id="insert" parameterType="model.dto.BookmarkDTO">
+		insert into bookmark_t values(#{id}, #{userId}, #{url}, #{name})
+	</insert>
+	
+	<select id="selectAll" parameterType="model.dto.UserDTO" resultType="model.dto.BookmarkDTO">
+		select id,userId,url,name from bookmark_T
+		where userId = #{userId}
+	</select>
+	
+	<select id="selectId" parameterType="model.dto.BookmarkDTO" resultType="model.dto.BookmarkDTO">
+		select * from bookmark_T where id=#{id}
+	</select>
+	
+	<select id="getId" resultType="int">
+		select BOOKMARK_S.NEXTVAL from dual
+		<!--select max(id) +1 from bookmark_T-->
+	</select>
+	
+	<update id="update" parameterType = "model.dto.BookmarkDTO">
+		update bookmark_T
+		set url= #{url},
+			name=#{name}
+		where id= #{id}
+	</update>
+	
+	<delete id="delete" parameterType = "model.dto.BookmarkDTO">
+		delete from bookmark_T
+		where id=#{id}
+	</delete>
+	
+	
+	
+</mapper>

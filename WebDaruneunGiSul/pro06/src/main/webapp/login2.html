@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name ="frmLogin" action="login5" method="get" encType="UTF-8">
+		아이디<input type="text" name= "id"><br>
+		비밀번호<input type= "password" name="password"><br>
+		<input type="button" onclick="fn_validate();" value="로그인">
+		<!-- submit을 따로 설정해야한다. -->
+		
+		<input type="hidden" name="adress" value="서울시 성북구">
+		<input type="reset" value="되돌리기"> 
+
+	</form>
+
+	<script type="text/javascript">
+	
+	function fn_validate(){
+		var fm= document.frmLogin;
+		if(fm.id.value.length==0 ){
+			alert("아이디 또는 비밀번호를 입력하세요")
+		}else{
+			
+			fm.method="post";
+			fm.submit();
+		}
+		
+	}
+
+	</script>
+</body>
+</html>

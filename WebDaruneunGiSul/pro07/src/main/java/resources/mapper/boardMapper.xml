@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+	<select id="selectAll" resultType="model.dto.BoardDTO">
+		select * from t_board
+	</select>
+	
+	<select id="rowNum" resultType="int">
+		select count(*) from t_board
+	</select>
+	<select id="selectByPage" parameterType="map" resultType="model.dto.BoardDTO">
+			select articleno,parentno,title,content,imagefilename,writedate,ID
+			from(select ROWNUM as num,articleno,parentno,title,content,imagefilename,writedate,ID 
+					from(select * from t_board order by articleNO desc)
+				)
+			where num between #{start} and #{last}
+	</select>
+	<select id="selectByArticleNO" parameterType="model.dto.BoardDTO" resultType="model.dto.BoardDTO">
+		select * from t_board where articleNO= #{articleNO}
+	</select>
+	<update id="recUP" parameterType="model.dto.BoardDTO">
+		update t_board
+		set recUP= recUP+1
+		where articleNO = #{articleNO}
+	</update>
+	<update id="recDOWN" parameterType="model.dto.BoardDTO">
+		update t_board
+		set recDOWN= recDOWN+1
+		where articleNO = #{articleNO}
+	</update>
+	<update id="removeRecDOWN" parameterType="model.dto.BoardDTO">
+		update t_board
+		set recDOWN= recDOWN-1
+		where articleNO = #{articleNO}
+	</update>
+	<update id="removeRecUP" parameterType="model.dto.BoardDTO">
+		update t_board
+		set recUP= recUP-1
+		where articleNO = #{articleNO}
+	</update>
+	<select id= "getSequence"  resultType="int">
+		select seq_t_board.nextval from dual
+	</select>
+	<insert id ="insertBoard" parameterType="model.dto.BoardDTO" >
+		insert into t_board values(#{articleNO},DEFAULT, #{title},#{content},#{imageFileName},DEFAULT,#{id}, DEFAULT,DEFAULT ,DEFAULT)
+	</insert>
+	
+	<insert id ="insertImage" parameterType="model.dto.BoardDTO" >
+		INSERT INTO t_BOARD_IMG VALUES(s_BOARD_IMG.NEXTVAL, #{boardId}, #{path}, #{name}, #{uuid})
+	</insert>
+	<select id="getImages" parameterType="model.dto.BoardDTO" resultType="model.dto.BoardImageDTO">
+		select * from t_board_img where boardId=#{articleNO}
+	</select>
+
+</mapper>

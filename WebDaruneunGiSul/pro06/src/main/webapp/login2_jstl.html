@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name ="Flogin" action="./view/LoginJSTL.jsp" method="post" encType="UTF-8">
+		아이디<input type="text" name= "id"><br>
+		비밀번호<input type= "password" name="password"><br>
+		<input type="button" onclick="fn_validate();" value="로그인">
+		<!-- submit을 따로 설정해야한다. -->
+		
+		<input type="hidden" name="adress" value="서울시 성북구">
+		<input type="reset" value="되돌리기"> 
+
+	</form>
+
+	<script type="text/javascript">
+	function fn_validate(){
+		var frmLogin= document.Flogin;
+		var userId= frmLogin.id.value;
+		var userPw= frmLogin.password.value;
+		
+		if(userId.length==0 || userId=="" || userPw.length==0 || userPw==""){
+			alert(" 아이디 비번을 확인해주세요");
+		}else{
+			frmLogin.method="post";
+			frmLogin.submit();
+			
+		}
+		
+		
+	}
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="WebDaruneunGiSul">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/pro05/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/pro06/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/pro08/src/main/java"/>
+        <property name="context-root" value="WebDaruneunGiSul"/>
+        <property name="java-output-path" value="/WebDaruneunGiSul/bin"/>
+    </wb-module>
+</project-modules>
